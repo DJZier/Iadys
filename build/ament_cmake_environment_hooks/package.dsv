@@ -1,0 +1,4 @@
+source;share/iadys/local_setup.bash
+source;share/iadys/local_setup.dsv
+source;share/iadys/local_setup.sh
+source;share/iadys/local_setup.zsh

@@ -1,0 +1,6 @@
+{
+  "package_name": "iadys",
+  "non_idl_tuples": [
+    "/home/florian/dev_ws/src/iadys:msg/Position.msg"
+  ]
+}

@@ -1,0 +1,4 @@
+source;share/iadys/environment/ament_prefix_path.sh
+source;share/iadys/environment/library_path.sh
+source;share/iadys/environment/path.sh
+source;share/iadys/environment/pythonpath.sh
