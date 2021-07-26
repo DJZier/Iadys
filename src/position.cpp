@@ -23,7 +23,7 @@ public:
 
 
 
-    camera.readFromXMLFile("/home/florian/aruco_ws/EstimateMarkerPose/aruco_calibration_board_a4.yml");///
+    camera.readFromXMLFile("/home/florian/aruco-3.1.12/utils_calibration/aruco_calibration_grid_board_a4_v2.yml");
     Detector.setDictionary("ARUCO_MIP_36h12");
 
 
@@ -37,17 +37,17 @@ public:
             aruco::CvDrawingUtils::draw3dAxis(im,m,camera);
             cout<<"rvec = " << m.Rvec<<"   tvec= "<<m.Tvec<<endl;
 
-            /*message.x = m.Tvec(row1,col);
-            message.y =m.Tvec(row2,col);
-            message.z = m.Tvec(row3,col);
-            message.teta = m.Rvec(row3,col);*/
+            message.x = m.Tvec.at<float>(0,0);
+            message.y = m.Tvec.at<float>(1,0);
+            message.z =m.Tvec.at<float>(2,0);
+            message.tetax = m.Rvec.at<float>(0,0);
+            message.tetay = m.Rvec.at<float>(1,0);
+            message.tetaz = m.Rvec.at<float>(2,0);
             
 
-            message.x = m.Tvec.at<float>(0,0);
-
         }
-        cv::imshow("image",im);
-        cv::waitKey(1);
+        //cv::imshow("image",im);
+        //cv::waitKey(1);
 
 
 
@@ -57,7 +57,7 @@ public:
         
 
         std::cout << "Publishing Position\nX:" << message.x <<
-          "  Y:" << message.y <<"    Z: " << message.z << "    teta : " << message.teta << std::endl;
+          "  Y:" << message.y <<"    Z: " << message.z << "    tetax : " << message.tetax<< "    tetay : " << message.tetay<< "    tetaz rad : " << message.tetaz  << "    tetaz deg : " << (message.tetaz*180)/3.14 << std::endl;
 
         this->position_publisher_->publish(message);
       };
